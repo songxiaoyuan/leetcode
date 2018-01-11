@@ -25,10 +25,28 @@ def numDecodings(s):
                 dp[i] = dp[i+1]
     return dp[0]
 
+def findLength(A, B):
+    """
+    :type A: List[int]
+    :type B: List[int]
+    :rtype: int
+    """
+    dp = []
+    for i in range(len(A)+1):
+        dp.append([0]*(len(B)+1))
+    for i in xrange(1,len(A)+1):
+        for j in xrange(1,len(B)+1):
+            if A[i-1] == B[j-1]:
+                dp[i][j] = dp[i-1][j-1]+1
+    for row in dp:
+        print row
+
 if __name__ == '__main__':
-    s = '10'
-    tmp = numDecodings(s)
-    print tmp
-    a = 'abc'
-    b = a[:]
-    print a==b
+    A = [1,2,3,4,5,6]
+    B = A[2:(1+4)]
+    print B
+
+
+
+
+
